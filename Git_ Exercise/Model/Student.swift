@@ -23,4 +23,15 @@ class Student {
         }
     }
 
+    func removeScore(subjectName: String) -> Bool {
+        if let index = subjects.firstIndex(where: { $0.name == subjectName }) {
+            subjects.remove(at: index)
+            return true
+        } else {
+            ConsoleView.printSubjectNotFound(subjectName: subjectName)
+            return false
+        }
+    }
+
+
 }

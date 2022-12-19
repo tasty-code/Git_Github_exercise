@@ -31,6 +31,8 @@ class Controller {
             removeStudent()
         case "3":
             updateScore()
+        case "4":
+            removeScore()
         default:
             break
         }
@@ -64,5 +66,17 @@ class Controller {
 
         studentList.updateScore(studentName: studentName, subject: Subject(name: subjectName, grade: grade))
     }
-    
+
+    func removeScore() {
+        ConsoleView.printRemoveScoreInform()
+        let input = ConsoleView.userInput()
+        guard InputChecker.checkRemoveScoreInput(input: input) else { return ConsoleView.printInputError() }
+
+        let array = input.split(separator: " ")
+        let studentName = String(array[0])
+        let subjectName = String(array[1])
+
+        studentList.removeScore(studentName: studentName, subjectName: subjectName)
+    }
+
 }

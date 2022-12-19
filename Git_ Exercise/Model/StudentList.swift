@@ -30,4 +30,16 @@ class StudentList {
         student.updateScore(subject: subject)
         ConsoleView.printUpdateScoreComplete(studentName: studentName, subjectName: subject.name, grade: subject.getGrade().description)
     }
+
+    func removeScore(studentName: String, subjectName: String) {
+        guard let student = students.first(where: { $0.name == studentName }) else { return ConsoleView.printStudentNotFound(name: studentName) }
+
+        let isCompleted = student.removeScore(subjectName: subjectName)
+
+        if isCompleted {
+            ConsoleView.printRemoveScoreComplete(studentName: studentName, subjectName: subjectName)
+        }
+    }
+
+    
 }
