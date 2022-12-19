@@ -173,3 +173,7 @@ class DataBase: Codable
     }
     
 }
+
+var database = DataBase()
+database.makeFolder()
+database.load()
