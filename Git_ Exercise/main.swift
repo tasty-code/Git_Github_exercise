@@ -7,5 +7,20 @@
 
 import Foundation
 
-print("Hello, World!")
+class MyCreditManager {
+    
+    func showMenu() {
+        print(StringLiterals.Menu.startProgram)
+    }
+    
+}
 
+func main() {
+    
+    let myCreditManager = MyCreditManager()
+    
+    myCreditManager.showMenu()
+    
+}
+
+main()
