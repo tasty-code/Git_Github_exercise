@@ -7,5 +7,50 @@
 
 import Foundation
 
-print("Hello, World!")
-
+repeat {
+    
+    //MARK: - 원하는 기능 선택하기
+    print("""
+    원하는 기능을 입력해주세요
+    1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
+    """)
+    inputMenu = readLine() ?? ""
+    
+    //MARK: - 선택한 기능 실행하기
+    switch inputMenu {
+        case "1":
+            print("추가할 학생의 이름을 입력해주세요")
+            //학생추가 코드
+            //print(Student.students)   //FIXME: (확인용) 제출 전 삭제
+        case "2":
+            print("삭제할 학생의 이름을 입력해주세요")
+            //학생삭제 코드
+            //print(Student.students)   //FIXME: (확인용) 제출 전 삭제
+        case "3":
+            print("""
+            성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+            입력예) Mickey Swift A+
+            만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+            """)
+            //성적추가(변경) 코드
+            //print(Student.students[/*input값*/]!.grades)   //FIXME: (확인용) 제출 전 삭제
+        case "4":
+            print("""
+            성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+            입력예) Mickey Swift
+            """)
+            //성적삭제 코드
+            //print(Student.students[/*input값*/]!.grades)   //FIXME: (확인용) 제출 전 삭제
+        case "5":
+            print("평점을 알고싶은 학생의 이름을 입력해주세요")
+            //총점조회 코드
+            //print(Student.students[/*input값*/]!.grades)   //FIXME: (확인용) 제출 전 삭제
+        case "X":
+            //종료 코드 (*선택사항) - 구현하지 않거나 위치를 옮길 수 있음
+            print("프로그램을 종료합니다...")
+        default:
+            print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
+    }
+    print()
+    
+} while inputMenu != "X"
