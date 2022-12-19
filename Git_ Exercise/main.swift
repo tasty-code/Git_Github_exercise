@@ -7,5 +7,6 @@
 
 import Foundation
 
-print("Hello, World!")
+let controller = Controller()
 
+while controller.userSelectMenu() { }
