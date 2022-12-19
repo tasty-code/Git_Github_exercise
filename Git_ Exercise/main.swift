@@ -207,7 +207,9 @@ MAIN: while isExecute {
             continue MAIN
         }
     case "X", "x": // 종료 기능
-        print("_")
+        print("종료")
+        isExecute = false
+        
     default:
         print("잘못 입력하셨습니다. 1~5 사이의 숫자 또는 X를 입력해주세요")
     }
