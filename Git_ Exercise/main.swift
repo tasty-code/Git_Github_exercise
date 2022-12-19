@@ -91,14 +91,64 @@ class MyCreditManager {
     
     private func addOrChangeGradesProgram() {
         print(StringLiterals.Grades.addOrChangeGradesMessage)
+        
+        let input = readLine()!.split(separator: " ").map { String($0) }
+        
+        if input.count != 3 || !isExistStudent(input[0]) {
+            printInputError()
+            return
+        }
+        
+        let (name, subject, score) = (input[0], input[1], input[2])
+        
+        if let student = studentDictionary[name] {
+            student.grades[subject] = score
+            print(name, StringLiterals.Grades.studentSuccess,
+                  subject, StringLiterals.Grades.subjectSuccess,
+                  "\(score)\(StringLiterals.Grades.scoreSuccess)")
+        } else {
+            print(name,StringLiterals.Student.nonExistError)
+        }
     }
     
     private func deleteGradesProgram() {
         print(StringLiterals.Grades.deleteGradesMessage)
+        
+        let input = readLine()!.split(separator: " ").map { String($0) }
+        
+        if input.count != 2 || !isExistStudent(input[0]) {
+            printInputError()
+            return
+        }
+        
+        let (name, subject) = (input[0], input[1])
+                
+        if let student = studentDictionary[name] {
+            student.grades.removeValue(forKey: subject)
+            print(name, StringLiterals.Grades.studentSuccess,
+                  subject, StringLiterals.Grades.deleteSuccess)
+        } else {
+            print(name,StringLiterals.Student.nonExistError)
+        }
     }
     
     private func showGradesProgram() {
         print(StringLiterals.Grades.showGradesMessage)
+        
+        guard let name = readLine() else {
+            printInputError()
+            return
+        }
+        
+        if isExistStudent(name) {
+            if let student = studentDictionary[name] {
+                for grade in student.grades {
+                    print("\(grade.key): \(grade.value)")
+                }
+            }
+        } else {
+            print(name, StringLiterals.Student.nonExistError)
+        }
     }
     
     private func exitProgram() {
