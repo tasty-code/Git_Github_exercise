@@ -58,6 +58,15 @@ class MyCreditManager {
         }
     }
     
+    private func isExistSubject(name: String, subject: String) -> Bool {
+        if let student = studentDictionary[name] {
+            if let _ = student.grades[subject] {
+                return true
+            }
+        }
+        return false
+    }
+    
     private func addStudentProgram() {
         print(StringLiterals.Student.addStudentMessage)
         guard let name = readLine() else {
