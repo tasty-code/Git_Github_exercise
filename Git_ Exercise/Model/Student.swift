@@ -33,5 +33,16 @@ class Student {
         }
     }
 
+    func showAverageScore() {
+        subjects.forEach { subject in
+            print("\(subject.name): \(subject.grade.description)")
+        }
+
+        let average = subjects.reduce(0.0) { result, subject in
+            return result + subject.grade.rawValue
+        } / Double(subjects.count)
+
+        print("평점 : \(average)")
+    }
 
 }

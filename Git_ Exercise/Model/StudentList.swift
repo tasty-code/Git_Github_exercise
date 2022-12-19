@@ -41,5 +41,8 @@ class StudentList {
         }
     }
 
-    
+    func showAverageScore(studentName: String) {
+        guard let student = students.first(where: { $0.name == studentName }) else { return ConsoleView.printStudentNotFound(name: studentName) }
+        student.showAverageScore()
+    }
 }

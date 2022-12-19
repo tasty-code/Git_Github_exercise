@@ -33,6 +33,8 @@ class Controller {
             updateScore()
         case "4":
             removeScore()
+        case "5":
+            showAverageScore()
         default:
             break
         }
@@ -78,5 +80,11 @@ class Controller {
 
         studentList.removeScore(studentName: studentName, subjectName: subjectName)
     }
+    
+    func showAverageScore() {
+        ConsoleView.printShowScoreInform()
+        let input = ConsoleView.userInput()
 
+        studentList.showAverageScore(studentName: input)
+    }
 }
