@@ -43,6 +43,39 @@ final class CreditManager {
         }
         return parsedInput
     }
+    
+    
+    /// 입력과 상태에 따라 CreditManager 작동 분기
+    ///
+    /// - result Infomation이 있다면 출력한다
+    /// - 실행 후 credit manager의 status는 start로 변경
+    private func doWith(_ input: ParsedInput) throws {
+        do {
+            switch self.status {
+            case .start:
+                try start(input)
+                return
+            case .addStudent:
+                try add(student: input)
+            case .deleteStudent:
+                try delete(student: input)
+            case .addScore:
+                try add(score: input)
+            case .deleteScore:
+                try delete(score: input)
+            case .showScoreAverage:
+                try show(score: input)
+            case .exit:
+                return
+            }
+        } catch {
+            throw error
+        }
+        if let resInfo = status.resMessage(input: input) {
+            IOManager.writeMessage(resInfo, type: .reaction)
+        }
+        status = .start
+    }
 }
 
 //MARK: - Start
