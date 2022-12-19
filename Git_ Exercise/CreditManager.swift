@@ -35,4 +35,12 @@ final class CreditManager {
     
     func run() {
     }
+    
+    /// status 별 input parse
+    private func parse(input: String) throws -> ParsedInput {
+        guard let parsedInput = status.parse(input: input) else {
+            throw status == .start ? CMError.invalidStartInput : IOError.wrongInput
+        }
+        return parsedInput
+    }
 }
