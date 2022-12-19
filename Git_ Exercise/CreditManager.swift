@@ -33,7 +33,30 @@ final class CreditManager {
     /// CreditManager에 등록된 Student의 List
     private var students = [Student]()
     
+    /// 1. 저장된 데이터 로드
+    /// 2. 프로그램 상태에 맞는 info 메세지 출력
+    /// 3. input 처리 및 실행
+    /// 4. error발생 시 설명 출력
+    ///     - 종료 error 시 데이터 저장 및 프로그램 종료
     func run() {
+        loadData()
+        while true {
+            do {
+                IOManager.writeMessage(status.infoMessage)
+                let input = try IOManager.getInput(isStartStatus: status == .start)
+                let parsedInput = try parse(input: input)
+                try doWith(parsedInput)
+            } catch {
+                IOManager.writeMessage(error.localizedDescription, type: .error)
+                switch error {
+                case CMError.quitProgram:
+                    saveData()
+                    return
+                default:
+                    status = .start
+                }
+            }
+        }
     }
     
     /// status 별 input parse
