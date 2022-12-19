@@ -40,3 +40,9 @@ final class Student: Codable {
         return scores.removeValue(forKey: course)
     }
 }
+
+//MARK: - Student DataStructure
+
+struct StudentList: Codable {
+    let students: [Student]
+}
