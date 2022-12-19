@@ -10,7 +10,7 @@ import Foundation
 ///학생객체를 생성하고 관리하는 클래스
 ///- `students`: 이름(key)에 대응하는 학생객체(value)를 저장
 ///- `grades`: 과목(key)에 대응하는 성적(value)을 저장
-class Student {
+class Student: Codable {
 
     static var students = [String: Student]()
     let name: String
