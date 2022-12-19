@@ -18,6 +18,9 @@ class MyCreditManager {
     }
     
     func getUserInput() {
+        
+        // TODO: - 영어랑 + 문자만 받아오도록 하기
+        
         guard let input = readLine() else { return }
         selectMenu(input: input)
     }
@@ -104,6 +107,9 @@ class MyCreditManager {
         let input = readLine()!.split(separator: " ").map { String($0) }
         
         if input.count != 3 || !isExistStudent(input[0]) {
+            
+            // TODO: - 과목 a+, b+ 등 만 추가되게 하기
+            
             printInputError()
             return
         }
@@ -131,7 +137,9 @@ class MyCreditManager {
         }
         
         let (name, subject) = (input[0], input[1])
-                
+        
+        // TODO: - 과목이 없는 경우는 에러띄우기
+        
         if let student = studentDictionary[name] {
             student.grades.removeValue(forKey: subject)
             print(name, StringLiterals.Grades.studentSuccess,
@@ -151,9 +159,15 @@ class MyCreditManager {
         
         if isExistStudent(name) {
             if let student = studentDictionary[name] {
+                
+                // TODO: - 과목이 없는 경우는 에러띄우기
+
                 for grade in student.grades {
                     print("\(grade.key): \(grade.value)")
                 }
+                
+                // TODO: - 평점 구현하기 최대 소수점 2자리 ex) 4, 3.75, 4.1
+
             }
         } else {
             print(name, StringLiterals.Student.nonExistError)
@@ -163,6 +177,7 @@ class MyCreditManager {
     private func exitProgram() {
         print(StringLiterals.Menu.exitProgram)
         runValue = false
+        // TODO: - 저장 기능 추가하기
     }
 }
 
