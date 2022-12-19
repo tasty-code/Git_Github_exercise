@@ -15,6 +15,11 @@ final class Student: Codable {
         return scores.isEmpty
     }
     
+    var averageScore: Float {
+        let total = scores.values.reduce(0) { $0 + $1.rawValue }
+        return total/Float(scores.values.count)
+    }
+    
     init(name: String) {
         self.name = name
     }
