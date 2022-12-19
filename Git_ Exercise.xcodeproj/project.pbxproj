@@ -13,6 +13,7 @@
 		40841A572950008400E540E4 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40841A562950008400E540E4 /* Info.swift */; };
 		40841A592950022400E540E4 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40841A582950022400E540E4 /* Status.swift */; };
 		40841A5B2950031B00E540E4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40841A5A2950031B00E540E4 /* Student.swift */; };
+		40841A5D295004B200E540E4 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40841A5C295004B200E540E4 /* Score.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		40841A562950008400E540E4 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		40841A582950022400E540E4 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		40841A5A2950031B00E540E4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		40841A5C295004B200E540E4 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				40841A562950008400E540E4 /* Info.swift */,
 				40841A582950022400E540E4 /* Status.swift */,
 				40841A5A2950031B00E540E4 /* Student.swift */,
+				40841A5C295004B200E540E4 /* Score.swift */,
 			);
 			path = "Git_ Exercise";
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40841A5D295004B200E540E4 /* Score.swift in Sources */,
 				40841A53294FFE1F00E540E4 /* Error.swift in Sources */,
 				40841A5B2950031B00E540E4 /* Student.swift in Sources */,
 				40841A592950022400E540E4 /* Status.swift in Sources */,
