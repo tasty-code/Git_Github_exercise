@@ -108,3 +108,24 @@ extension CreditManager {
         students.removeAll { $0.name == name }
     }
 }
+
+
+//MARK: - Add Score
+
+extension CreditManager {
+    /// 등록된 학생에 course, score 정보 추가
+    ///
+    /// Error occurs when
+    /// - 입력받은 학생이 존재하지 않음
+    private func add(score input: ParsedInput) throws {
+        guard let name = input[0] as? String,
+              let course = input[1] as? String,
+              let score = input[2] as? Score else {
+            throw IOError.wrongInput
+        }
+        guard let student = students.first(where: { $0.name == name}) else {
+            throw CMError.studentNotFound(name: name)
+        }
+        student.update(course: course, score: score)
+    }
+}
