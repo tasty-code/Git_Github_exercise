@@ -151,3 +151,25 @@ extension CreditManager {
         }
     }
 }
+
+//MARK: - Show Average Score
+
+extension CreditManager {
+    /// 등록된 학생의 전체 과목과 평점 확인
+    ///
+    /// Error occurs when
+    /// - 입력받은 학생이 존재하지 않음
+    /// - 학생 정보에 등록된 과목이 없음
+    private func show(score input: ParsedInput) throws {
+        guard let name = input[0] as? String else {
+            throw IOError.wrongInput
+        }
+        guard let student = students.first(where: { $0.name == name}) else {
+            throw CMError.studentNotFound(name: name)
+        }
+        guard false == student.scores.isEmpty else {
+            throw CMError.emptyCourse(name: name)
+        }
+        IOManager.writeMessage(student.allScoresDescription)
+    }
+}
