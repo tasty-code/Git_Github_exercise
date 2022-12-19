@@ -12,6 +12,39 @@ func validateInput(_ value: String) -> Bool{
     return isValid
 }
 
+// 성적 평점 구하는 함수
+func calculateAverage(_ list: [String]) -> Double {
+    var numberList: [Double] = []
+    for score in list {
+        switch score {
+        case "A+":
+            numberList.append(4.5)
+        case "A0":
+            numberList.append(4)
+        case "B+":
+            numberList.append(3.5)
+        case "B0":
+            numberList.append(3)
+        case "C+":
+            numberList.append(2.5)
+        case "C0":
+            numberList.append(2)
+        case "D+":
+            numberList.append(1.5)
+        case "D0":
+            numberList.append(1)
+        case "F":
+            numberList.append(0)
+        default:
+            break
+        }
+    }
+
+    let sum = numberList.reduce(0){$0 + $1}
+    let result = sum / Double(list.count)
+    return result
+}
+
 MAIN: while isExecute {
     print("원하는 기능을 입력해주세요")
     print("1: 학생 추가, 2: 학생 삭제, 3: 성적 추가(변경), 4: 성적 삭제, 5: 평점보기, X: 종료 ")
@@ -64,10 +97,82 @@ MAIN: while isExecute {
         }
         
     case "3": // 성적 추가(변경) 기능
-        print("_")
+        while true {
+            print("성적을 추가할 학생의 이름, 과목명, 성적(예: A+, A0, F 등)을 띄어쓰기로 구분하여 차례대로 입력해주세요")
+            print("입력 예) tom swift A+")
+            print("만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다")
+            let score = readLine()!
+            let scoreList = score.split(separator: " ")
+
+            if scoreList.count != 3 {
+                print("입력이 잘못되었습니다. 다시 확인해주세요")
+                continue MAIN
+            }
+
+            let studentName = String(scoreList[0])
+            let subjectName = String(scoreList[1])
+            let scoreValue = String(scoreList[2])
+
+            if validateInput(studentName) == false || validateInput(subjectName) == false  {
+                print("입력이 잘못되었습니다. 다시 확인해주세요")
+                continue MAIN
+            }
+
+            let isContain = scoreLevel.contains(scoreValue)
+            guard isContain else {
+                print("성적 입력이 잘못되었습니다. 다시 확인해주세요")
+                continue MAIN
+            }
+
+            for item in list {
+                if String(item["name"]!) == studentName {
+                    // 성적 추가
+                    let findIndex = list.firstIndex(of: item)!
+                    var findData = list[findIndex]
+                    findData[subjectName] = scoreValue
+                    list.remove(at: findIndex)
+                    list.append(findData)
+                    print("\(studentName) 학생의 \(subjectName) 과목이 \(scoreValue)로 추가(변경)되었습니다")
+                    continue MAIN
+                }
+            }
+
+            print("\(studentName) 학생을 찾지 못했습니다. 다시 확인해주세요")
+            continue MAIN
+        }
 
     case "4": // 성적 삭제 기능
-        print("_")
+        print("성적을 삭제할 학생의 이름, 과목명을 띄어쓰기로 구분하여 차례대로 입력해주세요")
+        let score = readLine()!
+        let scoreList = score.split(separator: " ")
+
+        if scoreList.count != 2 {
+            print("입력이 잘못되었습니다. 다시 확인해주세요")
+            continue MAIN
+        }
+
+        let studentName = String(scoreList[0])
+        let subjectName = String(scoreList[1])
+
+        guard validateInput(studentName) && validateInput(subjectName) else {
+            print("입력이 잘못되었습니다. 다시 확인해주세요")
+            continue MAIN
+        }
+
+        for item in list {
+            if String(item["name"]!) == studentName {
+                let findIndex = list.firstIndex(of: item)!
+                var findData = list[findIndex]
+                findData[subjectName] = nil
+                list.remove(at: findIndex)
+                list.append(findData)
+                print("\(studentName) 학생의 \(subjectName) 과목의 성적이 삭제되었습니다")
+                continue MAIN
+            }
+        }
+
+        print("\(studentName) 학생을 찾지 못했습니다. 다시 확인해주세요")
+        continue MAIN
 
     case "5": // 평점보기 기능
         print("_")
