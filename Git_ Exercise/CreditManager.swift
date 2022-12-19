@@ -62,3 +62,27 @@ extension CreditManager {
         self.status = nextStatus
     }
 }
+
+//MARK: - AddStudent
+
+extension CreditManager {
+    /// 입력받은 학생을 students에 추가
+    ///
+    /// Error occurs when
+    /// - 입력받은 학생이 이미 존재
+    private func add(student input: ParsedInput) throws {
+        guard let name = input[0] as? String else {
+            throw IOError.wrongInput
+        }
+        guard false == exists(student: name) else {
+            throw CMError.studentAleadyExists(name: name)
+        }
+        let student = Student(name: name)
+        students.append(student)
+    }
+    
+    /// 학생이 등록되어 있다면 true
+    private func exists(student name: String) -> Bool {
+        return students.contains { $0.name == name }
+    }
+}
