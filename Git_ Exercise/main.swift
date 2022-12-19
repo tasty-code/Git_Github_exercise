@@ -7,5 +7,5 @@
 
 import Foundation
 
-print("Hello, World!")
-
+let cm = CreditManager.shared
+cm.run()
