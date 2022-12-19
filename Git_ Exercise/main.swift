@@ -175,7 +175,37 @@ MAIN: while isExecute {
         continue MAIN
 
     case "5": // 평점보기 기능
-        print("_")
+        while true {
+            print("평점을 알고 싶은 학생의 이름을 입력해주세요")
+            let studentName = readLine()!
+
+            guard validateInput(studentName) else {
+                print("입력이 잘못되었습니다. 다시 확인해주세요")
+                continue MAIN
+            }
+
+            for item in list {
+                if String(item["name"]!) == studentName {
+                    var scoreList: [String] = []
+                    let findIndex = list.firstIndex(of: item)!
+                    let findData = list[findIndex]
+                    for (key, value) in findData {
+                        if key == "name" {
+                            continue
+                        }
+                        scoreList.append(value)
+                        print("\(key): \(value)")
+                    }
+
+                    let averageScore = String(format: "%.2f", calculateAverage(scoreList))
+                    print("평점: \(averageScore)")
+                    continue MAIN
+                }
+            }
+
+            print("\(studentName) 학생을 찾지 못했습니다. 다시 확인해주세요")
+            continue MAIN
+        }
     case "X", "x": // 종료 기능
         print("_")
     default:
