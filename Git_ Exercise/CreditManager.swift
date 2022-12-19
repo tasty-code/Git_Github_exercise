@@ -195,4 +195,17 @@ extension CreditManager {
             IOManager.writeMessage(error.localizedDescription, type: .error)
         }
     }
+    
+    /// json 파일 데이터를 students property에 불러오기
+    private func loadData() {
+        guard let data = try? Data(contentsOf: DataFile.pathUrl),
+              let studentList = try? JSONDecoder().decode(StudentList.self, from: data) else {
+            IOManager.writeMessage(Info.Warning.failedToLoadData, type: .error)
+            return
+        }
+        students = studentList.students
+        
+        let names = students.map {$0.name}
+        IOManager.writeMessage(Info.Data.loaded(names: names), type: .reaction)
+    }
 }
