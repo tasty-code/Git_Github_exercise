@@ -11,6 +11,7 @@
 		EBE68051294FFF3200EB47C3 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE68050294FFF3200EB47C3 /* Student.swift */; };
 		EBE68053294FFF5C00EB47C3 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE68052294FFF5C00EB47C3 /* Grade.swift */; };
 		EBE680552950010A00EB47C3 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE680542950010A00EB47C3 /* InputError.swift */; };
+		EBE680572950043B00EB47C3 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE680562950043B00EB47C3 /* InputManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		EBE68050294FFF3200EB47C3 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Student.swift; path = ../../../../../Documents/Student.swift; sourceTree = "<group>"; };
 		EBE68052294FFF5C00EB47C3 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Grade.swift; path = ../../../../../Documents/Grade.swift; sourceTree = "<group>"; };
 		EBE680542950010A00EB47C3 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputError.swift; path = ../../../../../Documents/InputError.swift; sourceTree = "<group>"; };
+		EBE680562950043B00EB47C3 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputManager.swift; path = ../../../../../Documents/InputManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				EBE68050294FFF3200EB47C3 /* Student.swift */,
 				EBE68052294FFF5C00EB47C3 /* Grade.swift */,
 				EBE680542950010A00EB47C3 /* InputError.swift */,
+				EBE680562950043B00EB47C3 /* InputManager.swift */,
 			);
 			path = "Git_ Exercise";
 			sourceTree = "<group>";
@@ -129,6 +132,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE680572950043B00EB47C3 /* InputManager.swift in Sources */,
 				2768CA08294F453B00990B98 /* main.swift in Sources */,
 				EBE680552950010A00EB47C3 /* InputError.swift in Sources */,
 				EBE68051294FFF3200EB47C3 /* Student.swift in Sources */,
