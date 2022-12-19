@@ -9,7 +9,7 @@ import Foundation
 
 class Controller {
     private let studentList = StudentList()
-    
+
     func userSelectMenu() -> Bool {
         ConsoleView.printUserSelectMenu()
         let input = ConsoleView.userInput()
@@ -29,6 +29,8 @@ class Controller {
             addStudent()
         case "2":
             removeStudent()
+        case "3":
+            updateScore()
         default:
             break
         }
@@ -42,11 +44,25 @@ class Controller {
         guard input.isEmpty == false else { return ConsoleView.printInputError() }
         studentList.addStudent(name: input)
     }
-    
+
     func removeStudent() {
         ConsoleView.printRemoveStudentInform()
         let input = ConsoleView.userInput()
         guard input.isEmpty == false else { return ConsoleView.printInputError() }
         studentList.removeStudent(name: input)
     }
+
+    func updateScore() {
+        ConsoleView.printUpdateScoreInform()
+        let input = ConsoleView.userInput()
+        guard InputChecker.checkUpdateScoreInput(input: input) else { return ConsoleView.printInputError() }
+
+        let array = input.split(separator: " ")
+        let studentName = String(array[0])
+        let subjectName = String(array[1])
+        guard let grade = Grade(string: String(array[2])) else { return ConsoleView.printInputError() }
+
+        studentList.updateScore(studentName: studentName, subject: Subject(name: subjectName, grade: grade))
+    }
+    
 }

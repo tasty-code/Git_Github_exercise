@@ -18,4 +18,14 @@ struct InputChecker {
         }
         return true
     }
+    
+    static func checkUpdateScoreInput(input: String) -> Bool {
+        let inputArray = input.split(separator: " ")
+        guard inputArray.count == 3,
+            Grade(string: String(inputArray.last ?? "")) != nil else {
+            return false
+        }
+        return true
+    }
+
 }

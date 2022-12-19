@@ -13,6 +13,8 @@
 		B45F2ECF294FFEDA0073EB03 /* InputChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F2ECE294FFEDA0073EB03 /* InputChecker.swift */; };
 		B45F2ED5294FFF700073EB03 /* StudentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F2ED4294FFF700073EB03 /* StudentList.swift */; };
 		B45F2ED7294FFF7B0073EB03 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F2ED6294FFF7B0073EB03 /* Student.swift */; };
+		B45F2ED9295001C70073EB03 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F2ED8295001C70073EB03 /* Grade.swift */; };
+		B45F2EDB295001E20073EB03 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45F2EDA295001E20073EB03 /* Subject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +37,8 @@
 		B45F2ECE294FFEDA0073EB03 /* InputChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputChecker.swift; sourceTree = "<group>"; };
 		B45F2ED4294FFF700073EB03 /* StudentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentList.swift; sourceTree = "<group>"; };
 		B45F2ED6294FFF7B0073EB03 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		B45F2ED8295001C70073EB03 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		B45F2EDA295001E20073EB03 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 			children = (
 				B45F2ED4294FFF700073EB03 /* StudentList.swift */,
 				B45F2ED6294FFF7B0073EB03 /* Student.swift */,
+				B45F2ED8295001C70073EB03 /* Grade.swift */,
+				B45F2EDA295001E20073EB03 /* Subject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,10 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45F2EDB295001E20073EB03 /* Subject.swift in Sources */,
 				2768CA08294F453B00990B98 /* main.swift in Sources */,
 				B45F2ED7294FFF7B0073EB03 /* Student.swift in Sources */,
 				B45F2ECD294FFE9E0073EB03 /* ConsoleView.swift in Sources */,
 				B45F2ECF294FFEDA0073EB03 /* InputChecker.swift in Sources */,
+				B45F2ED9295001C70073EB03 /* Grade.swift in Sources */,
 				B45F2ECB294FFE760073EB03 /* Controller.swift in Sources */,
 				B45F2ED5294FFF700073EB03 /* StudentList.swift in Sources */,
 			);
