@@ -44,3 +44,21 @@ final class CreditManager {
         return parsedInput
     }
 }
+
+//MARK: - Start
+
+extension CreditManager {
+    /// 입력에 따라 credit manager의 status 변경
+    private func start(_ input: ParsedInput) throws {
+        guard let nextStatus = input[0] as? Status else {
+            throw CMError.invalidStartInput
+        }
+        guard nextStatus != .exit else {
+            throw CMError.quitProgram
+        }
+        guard [Status.start, Status.addStudent].contains(nextStatus) || false == students.isEmpty else {
+            throw CMError.emptyStudents
+        }
+        self.status = nextStatus
+    }
+}
