@@ -30,4 +30,15 @@ enum IOManager {
         return str.range(of: Self.nameRegex, options: .regularExpression, range: nil, locale: nil) != nil
     }
     
+    /// message 콘솔에 출력
+    static func writeMessage(_ message: String, type: OutputType = .information) {
+        switch type {
+        case .information:
+            print("> \(message)")
+        case .reaction:
+            print("< \(message)")
+        case .error:
+            fputs("⚠️ \(message)\n", stderr)
+        }
+    }
 }
