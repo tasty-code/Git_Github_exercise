@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Subject {
+class Subject: Codable {
     let name: String
     let grade: Grade
 

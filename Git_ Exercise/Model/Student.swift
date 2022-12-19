@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Student {
+class Student: Codable {
     let name: String
     private var subjects = [Subject]()
 

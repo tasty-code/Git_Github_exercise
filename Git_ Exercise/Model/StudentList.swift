@@ -9,6 +9,11 @@ import Foundation
 
 class StudentList {
     private var students = [Student]()
+    private let key = "students"
+
+    init() {
+        loadData()
+    }
 
     func addStudent(name: String) {
         guard students.contains(where: { $0.name == name }) == false else { return ConsoleView.printStudentAlreadyExists(name: name) }
@@ -44,5 +49,21 @@ class StudentList {
     func showAverageScore(studentName: String) {
         guard let student = students.first(where: { $0.name == studentName }) else { return ConsoleView.printStudentNotFound(name: studentName) }
         student.showAverageScore()
+    }
+
+    func saveData() {
+        let value = try? PropertyListEncoder().encode(students)
+        UserDefaults.standard.setValue(value, forKey: key)
+        ConsoleView.printSaveDataInform()
+    }
+
+    func loadData() {
+        guard let data = UserDefaults.standard.value(forKey: key) as? Data else { return }
+        guard let loadStudents = try? PropertyListDecoder().decode([Student].self, from: data) else { return }
+
+        if loadStudents.isEmpty == false {
+            students = loadStudents
+            ConsoleView.printLoadDataInform()
+        }
     }
 }

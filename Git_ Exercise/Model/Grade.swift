@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Grade: Double {
+enum Grade: Double, Codable {
     case Aplus = 4.5
     case A0 = 4
     case Bplus = 3.5

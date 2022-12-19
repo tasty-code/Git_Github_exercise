@@ -15,6 +15,7 @@ class Controller {
         let input = ConsoleView.userInput()
 
         if input.lowercased() == "x" {
+            saveData()
             ConsoleView.printTerminateProgram()
             return false
         }
@@ -86,5 +87,9 @@ class Controller {
         let input = ConsoleView.userInput()
 
         studentList.showAverageScore(studentName: input)
+    }
+    
+    func saveData() {
+        studentList.saveData()
     }
 }
