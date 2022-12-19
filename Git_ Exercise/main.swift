@@ -11,6 +11,8 @@ var runValue: Bool = true
 
 class MyCreditManager {
     
+    var studentDictionary = [String : Student]()
+    
     func showMenu() {
         print(StringLiterals.Menu.startProgram)
     }
@@ -22,6 +24,10 @@ class MyCreditManager {
     
     private func printWrongMenuError() {
         print(StringLiterals.Menu.wrongMenu)
+    }
+    
+    private func printInputError() {
+        print(StringLiterals.Menu.wrongInput)
     }
     
     private func selectMenu(input: String) {
@@ -44,12 +50,43 @@ class MyCreditManager {
         }
     }
     
+    private func isExistStudent(_ name: String) -> Bool {
+        if let _ = studentDictionary[name] {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     private func addStudentProgram() {
         print(StringLiterals.Student.addStudentMessage)
+        guard let name = readLine() else {
+            printInputError()
+            return
+        }
+        
+        if isExistStudent(name) {
+            print("\(name)\(StringLiterals.Student.alredyExistError)")
+        } else {
+            studentDictionary[name] = Student(name: name)
+            print(name, StringLiterals.Student.addStudentSuccess)
+        }
     }
     
     private func deleteStudentProgram() {
         print(StringLiterals.Student.deleteStudentMessage)
+        
+        guard let name = readLine() else {
+            printInputError()
+            return
+        }
+        
+        if isExistStudent(name) {
+            studentDictionary.removeValue(forKey: name)
+            print(name, StringLiterals.Student.deleteStudentSuccess)
+        } else {
+            print(name, StringLiterals.Student.nonExistError)
+        }
     }
     
     private func addOrChangeGradesProgram() {
