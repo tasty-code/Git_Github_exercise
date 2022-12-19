@@ -86,3 +86,25 @@ extension CreditManager {
         return students.contains { $0.name == name }
     }
 }
+
+//MARK: - Delete Student
+
+extension CreditManager {
+    /// 입력받은 학생을 students에서 삭제
+    ///
+    /// Error occurs when
+    /// - 등록된 학생이 0명
+    /// - 입력받은 학생이 존재하지 않음
+    private func delete(student input: ParsedInput) throws {
+        guard false == students.isEmpty  else {
+            throw CMError.emptyStudents
+        }
+        guard let name = input[0] as? String else {
+            throw IOError.wrongInput
+        }
+        guard exists(student: name) else {
+            throw CMError.studentNotFound(name: name)
+        }
+        students.removeAll { $0.name == name }
+    }
+}
