@@ -73,3 +73,42 @@ extension Status {
         return Info.Warning.failedToLoadReaction
     }
 }
+
+//MARK: - Status - parse method
+
+extension Status {
+    /// status에 따라 사용자 입력 parse
+    func parse(input: String) -> ParsedInput? {
+        let splited = input.components(separatedBy: " ")
+        switch (self, splited.count) {
+        case (.start, 1):
+            guard let status = Status(rawValue: splited[0]) else {
+                return nil
+            }
+            return [status]
+        case (.addStudent, 1), (.deleteStudent, 1), (.showScoreAverage, 1):
+            guard IOManager.checkValidity(of: splited[0]) else {
+                return nil
+            }
+            return splited
+        case (.addScore, 3):
+            guard IOManager.checkValidity(of: splited[0]),
+                  IOManager.checkValidity(of: splited[1]),
+                  let score = Score(score: splited[2]) else {
+                return nil
+            }
+            var res = [Codable]()
+            res.append(contentsOf: splited)
+            res[2] = score
+            return res
+        case (.deleteScore, 2):
+            guard IOManager.checkValidity(of: splited[0]),
+                  IOManager.checkValidity(of: splited[1]) else {
+                return nil
+            }
+            return splited
+        default:
+            return nil
+        }
+    }
+}
