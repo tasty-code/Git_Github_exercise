@@ -27,6 +27,8 @@ class Controller {
         switch input {
         case "1":
             addStudent()
+        case "2":
+            removeStudent()
         default:
             break
         }
@@ -39,5 +41,12 @@ class Controller {
         let input = ConsoleView.userInput()
         guard input.isEmpty == false else { return ConsoleView.printInputError() }
         studentList.addStudent(name: input)
+    }
+    
+    func removeStudent() {
+        ConsoleView.printRemoveStudentInform()
+        let input = ConsoleView.userInput()
+        guard input.isEmpty == false else { return ConsoleView.printInputError() }
+        studentList.removeStudent(name: input)
     }
 }

@@ -17,4 +17,10 @@ class StudentList {
         ConsoleView.printAddStudentComplete(name: name)
     }
 
+    func removeStudent(name: String) {
+        guard let index = students.firstIndex(where: { $0.name == name }) else { return ConsoleView.printStudentNotFound(name: name) }
+
+        students.remove(at: index)
+        ConsoleView.printRemoveStudentComplete(name: name)
+    }
 }
