@@ -20,6 +20,14 @@ final class Student: Codable {
         return total/Float(scores.values.count)
     }
     
+    var allScoresDescription: String {
+        var res = ""
+        for item in scores {
+            res += "\(item.key): \(item.value.description)\n"
+        }
+        return res + "평점: " + String(format: "%.2f", averageScore)
+    }
+    
     init(name: String) {
         self.name = name
     }
