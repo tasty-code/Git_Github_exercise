@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2768CA08294F453B00990B98 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768CA07294F453B00990B98 /* main.swift */; };
+		90D3F153294FFCB300CEA3F8 /* Modules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F152294FFCB300CEA3F8 /* Modules.swift */; };
+		90D3F156294FFFA200CEA3F8 /* AddStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F155294FFFA200CEA3F8 /* AddStudent.swift */; };
+		90D3F15C294FFFC600CEA3F8 /* UpdateGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F157294FFFC500CEA3F8 /* UpdateGrade.swift */; };
+		90D3F15D294FFFC600CEA3F8 /* DeleteStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F158294FFFC500CEA3F8 /* DeleteStudent.swift */; };
+		90D3F15E294FFFC600CEA3F8 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F159294FFFC600CEA3F8 /* Exit.swift */; };
+		90D3F15F294FFFC600CEA3F8 /* RemoveGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F15A294FFFC600CEA3F8 /* RemoveGrade.swift */; };
+		90D3F160294FFFC600CEA3F8 /* ReportCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F15B294FFFC600CEA3F8 /* ReportCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,13 @@
 /* Begin PBXFileReference section */
 		2768CA04294F453B00990B98 /* Git_ Exercise */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Git_ Exercise"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2768CA07294F453B00990B98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		90D3F152294FFCB300CEA3F8 /* Modules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modules.swift; sourceTree = "<group>"; };
+		90D3F155294FFFA200CEA3F8 /* AddStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudent.swift; sourceTree = "<group>"; };
+		90D3F157294FFFC500CEA3F8 /* UpdateGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateGrade.swift; sourceTree = "<group>"; };
+		90D3F158294FFFC500CEA3F8 /* DeleteStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteStudent.swift; sourceTree = "<group>"; };
+		90D3F159294FFFC600CEA3F8 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
+		90D3F15A294FFFC600CEA3F8 /* RemoveGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveGrade.swift; sourceTree = "<group>"; };
+		90D3F15B294FFFC600CEA3F8 /* ReportCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +71,32 @@
 		2768CA06294F453B00990B98 /* Git_ Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				90D3F154294FFF8000CEA3F8 /* Utils */,
+				90D3F151294FFCA200CEA3F8 /* Modules */,
 				2768CA07294F453B00990B98 /* main.swift */,
 			);
 			path = "Git_ Exercise";
+			sourceTree = "<group>";
+		};
+		90D3F151294FFCA200CEA3F8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				90D3F152294FFCB300CEA3F8 /* Modules.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		90D3F154294FFF8000CEA3F8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				90D3F155294FFFA200CEA3F8 /* AddStudent.swift */,
+				90D3F158294FFFC500CEA3F8 /* DeleteStudent.swift */,
+				90D3F159294FFFC600CEA3F8 /* Exit.swift */,
+				90D3F15A294FFFC600CEA3F8 /* RemoveGrade.swift */,
+				90D3F15B294FFFC600CEA3F8 /* ReportCard.swift */,
+				90D3F157294FFFC500CEA3F8 /* UpdateGrade.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D3F15F294FFFC600CEA3F8 /* RemoveGrade.swift in Sources */,
+				90D3F160294FFFC600CEA3F8 /* ReportCard.swift in Sources */,
 				2768CA08294F453B00990B98 /* main.swift in Sources */,
+				90D3F15E294FFFC600CEA3F8 /* Exit.swift in Sources */,
+				90D3F153294FFCB300CEA3F8 /* Modules.swift in Sources */,
+				90D3F15D294FFFC600CEA3F8 /* DeleteStudent.swift in Sources */,
+				90D3F15C294FFFC600CEA3F8 /* UpdateGrade.swift in Sources */,
+				90D3F156294FFFA200CEA3F8 /* AddStudent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
