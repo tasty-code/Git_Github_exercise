@@ -41,7 +41,28 @@ MAIN: while isExecute {
         }
 
     case "2": // 학생 삭제 기능
-        print("_")
+        while true {
+            print("삭제할 학생의 이름을 입력해주세요")
+            let studentName = readLine()!
+
+            guard validateInput(studentName) else {
+                print("입력이 잘못되었습니다. 다시 확인해주세요")
+                continue MAIN
+            }
+
+            for item in list {
+                if studentName == item["name"] {
+                    let findIndex = list.firstIndex(of: item)!
+                    list.remove(at: findIndex)
+                    print("\(studentName) 학생을 삭제하였습니다")
+                    continue MAIN
+                }
+            }
+
+            print("\(studentName) 학생을 찾기 못했습니다")
+            continue MAIN
+        }
+        
     case "3": // 성적 추가(변경) 기능
         print("_")
 
