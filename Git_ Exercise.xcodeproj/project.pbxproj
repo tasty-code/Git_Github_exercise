@@ -10,6 +10,7 @@
 		2768CA08294F453B00990B98 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768CA07294F453B00990B98 /* main.swift */; };
 		EBE68051294FFF3200EB47C3 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE68050294FFF3200EB47C3 /* Student.swift */; };
 		EBE68053294FFF5C00EB47C3 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE68052294FFF5C00EB47C3 /* Grade.swift */; };
+		EBE680552950010A00EB47C3 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE680542950010A00EB47C3 /* InputError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		2768CA07294F453B00990B98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EBE68050294FFF3200EB47C3 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Student.swift; path = ../../../../../Documents/Student.swift; sourceTree = "<group>"; };
 		EBE68052294FFF5C00EB47C3 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Grade.swift; path = ../../../../../Documents/Grade.swift; sourceTree = "<group>"; };
+		EBE680542950010A00EB47C3 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InputError.swift; path = ../../../../../Documents/InputError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				2768CA07294F453B00990B98 /* main.swift */,
 				EBE68050294FFF3200EB47C3 /* Student.swift */,
 				EBE68052294FFF5C00EB47C3 /* Grade.swift */,
+				EBE680542950010A00EB47C3 /* InputError.swift */,
 			);
 			path = "Git_ Exercise";
 			sourceTree = "<group>";
@@ -127,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2768CA08294F453B00990B98 /* main.swift in Sources */,
+				EBE680552950010A00EB47C3 /* InputError.swift in Sources */,
 				EBE68051294FFF3200EB47C3 /* Student.swift in Sources */,
 				EBE68053294FFF5C00EB47C3 /* Grade.swift in Sources */,
 			);
