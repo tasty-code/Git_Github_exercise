@@ -75,6 +75,25 @@ class DataBase: Codable
         result.append(String(format:"평점 : %.2f", score))
         return result
     }
+    func makeFolder() {
+        // FileManager 인스턴스 생성
+        let fileManager: FileManager = FileManager.default
+        // 사용자의 문서 경로
+        let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // 파일을 저장할 디렉토리 경로(URL) 반환 (경로 추가)
+        let directoryPath: URL = documentPath.appendingPathComponent("MyCreditManagerSave")
+        // 디렉토리에 만들 '파일이름.확장자' 설정 (경로에 'hi.txt'의 새 경로 추가)
+        
+        
+        // 파일매니저로 디렉토리 생성하기
+        do {
+            // 아까 만든 디렉토리 경로에 디렉토리 생성 (폴더가 만들어진다.)
+            try fileManager.createDirectory(at: directoryPath, withIntermediateDirectories: false, attributes: nil)
+        } catch _ {
+           // print(e.localizedDescription)
+        }
+    }
+   
     func save() {
         // FileManager 인스턴스 생성
         let fileManager: FileManager = FileManager.default
