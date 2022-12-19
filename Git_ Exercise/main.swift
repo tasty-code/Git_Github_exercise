@@ -224,3 +224,117 @@ while running
         
     }
 }
+func isStringValid(string: String) -> Bool
+{
+    let checker = "[a-zA-Z0-9+\\s]" // 영어소문자,대문자,숫자,공백 \두개 써준 이유는 Invalid escape sequence in literal 오류 해결을 위해
+    let isStringChecked = string.range(of: checker, options: .regularExpression) != nil //true가 체크된것
+    return isStringChecked
+}
+
+func addStudent()
+{
+    print("추가할 학생의 이름을 입력해주세요")
+    let inputName = readLine() ?? ""
+    /* 여기서 inputName이 영어,숫자로 이루어져있는지 확인해야함. -> 다른 함수들에서도 필요할 것 같으니 함수로 따로 만들자.
+     nil 병합 연산자 Optional ?? Value -> 옵셔널 값이 nil인 경우 우측의 값을 반환. 띄어쓰기 주의 (reaLine을 통한 input이 nil이면 공백으로 처리해줘) */
+    if isStringValid(string: inputName){
+        if database.checkExist(name: inputName) {
+            print("\(inputName)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
+        }else{
+            database.addStudent(name: inputName)
+            print("\(inputName) 학생을 추가했습니다.")
+        }
+    }else{
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+    }
+}
+
+func deleteStudent()
+{
+    print("삭제할 학생의 이름을 입력해주세요")
+    let inputName = readLine() ?? ""
+    
+    if isStringValid(string: inputName){
+        if database.checkExist(name: inputName) {
+            database.deleteStudent(name: inputName)
+            print("\(inputName) 학생을 삭제했습니다.")
+        }else{
+            print("\(inputName) 학생을 찾지 못했습니다.")
+        }
+    }else{
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+    }
+}
+
+func addCourse()
+{
+    print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift A+")
+    let inputString:String = readLine() ?? ""
+    let inputs = inputString.components(separatedBy: " ") // 스페이스를 기준으로 입력받기 때문에 스플릿 해준다.
+    //입력값이 3개여야 하는데 1개나,2개 혹은 다르게 쓰는 경우 방지
+    if inputs.count != 3 {
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        return
+    }
+    if isStringValid(string: inputs[0]) && isStringValid(string: inputs[1]) && isStringValid(string: inputs[2]) //각 입력값 유효한지 체크
+    {
+        if database.checkExist(name: inputs[0])
+        {
+            database.addCourse(name: inputs[0], course: Course(name: inputs[1], grade: inputs[2]))
+            print("만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
+        }else{
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        }
+    }else{
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+    }
+}
+
+func deleteCourse()
+{
+    print("성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift")
+    let inputString:String = readLine() ?? ""
+    let inputs = inputString.components(separatedBy: " ") // 스페이스를 기준으로 입력받기 때문에 스플릿 해준다.
+    //입력값이 2개여야 하는데 1개나,3개 혹은 다르게 쓰는 경우 방지
+    if inputs.count != 2 {
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        return
+    }
+    if isStringValid(string: inputs[0]) && isStringValid(string: inputs[1]) //각 입력값 유효한지 체크
+    {
+        if database.checkExist(name: inputs[0]){
+            database.deleteCourse(name: inputs[0], courseName: inputs[1])
+            print("\(inputs[0]) 학생의 \(inputs[1]) 과목의 성적이 삭제되었습니다.")
+        }else{
+            print("\(inputs[0]) 학생을 찾지 못했습니다")
+        }
+    }else{
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+    }
+}
+
+func checkGrade()
+{
+    print("평점을 알고싶은 학생의 이름을 입력해주세요")
+    let inputName = readLine() ?? ""
+    if isStringValid(string: inputName)
+    {
+        if database.checkExist(name: inputName)
+        {
+            print(database.checkGrade(name: inputName))
+        }else{
+            print("\(inputName) 학생을 찾지 못했습니다.")
+        }
+    }else{
+        print("입력이 잘못되었습니다. 다시 확인해주세요.")
+    }
+    
+}
+
+func endProgram()
+{
+    database.saves()
+    print("프로그램을 종료합니다...")
+    running = false
+    
+}
