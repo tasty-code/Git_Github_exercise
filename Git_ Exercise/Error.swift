@@ -39,3 +39,18 @@ extension CMError: LocalizedError {
         }
     }
 }
+
+//MARK: - IOError
+
+enum IOError: Error {
+    case wrongInput
+}
+
+extension IOError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .wrongInput:
+            return "입력이 잘못되었습니다. 다시 확인해주세요."
+        }
+    }
+}
