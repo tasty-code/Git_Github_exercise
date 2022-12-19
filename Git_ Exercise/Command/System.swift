@@ -13,6 +13,7 @@ final class System {
     init() {
         self.students = []
     }
+
     // 명렁어 - 학생추가 구현부
     func addStudent() -> State {
         // 설명 안내 문구 출력, 추가할 학생의 이름을 입력받음
@@ -39,7 +40,26 @@ final class System {
 
     // 명렁어 - 학생삭제 구현부
     func deleteStudent() -> State {
-        print("2. 학생삭제")
+        // 설명 안내 문구 출력, 삭제할 학생의 이름을 입력받음
+        // EOF(Ctrl + D)는 프로그램 종료로 처리
+        guard let studentName = getLine(messageType: .pleaseInputStudentNameToDelete) else {
+            return .quit
+        }
+        // 이름 유효성 검사
+        guard checkValidInput(studentName) else {
+            printMessage(messageType: .inputError)
+            return .continued
+        }
+        // 존재하지 않는 학생은 삭제할 수 없음
+        guard let index = findStudentIndex(name: studentName) else {
+            print(studentName, terminator: " ")
+            printMessage(messageType: .cannotFindStudent)
+            return .continued
+        }
+        // 학생 삭제
+        self.students = self.students.filter { $0.name != students[index].name }
+        print(studentName, terminator: " ")
+        printMessage(messageType: .deletedStudent)
         return .continued
     }
 
