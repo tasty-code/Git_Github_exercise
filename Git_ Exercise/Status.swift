@@ -19,3 +19,26 @@ enum Status: String, Codable {
     case showScoreAverage = "5"
     case exit = "X"
 }
+
+//MARK: - Info Message
+
+extension Status {
+    var infoMessage: String {
+        switch self {
+        case .start:
+            return Info.start
+        case .addStudent:
+            return Info.Student.forAdd
+        case .deleteStudent:
+            return Info.Student.forDelete
+        case .addScore:
+            return Info.Score.forAdd
+        case .deleteScore:
+            return Info.Score.forDelete
+        case .showScoreAverage:
+            return Info.Score.forAverage
+        default:
+            return ""
+        }
+    }
+}
