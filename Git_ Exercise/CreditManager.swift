@@ -173,3 +173,26 @@ extension CreditManager {
         IOManager.writeMessage(student.allScoresDescription)
     }
 }
+
+
+extension CreditManager {
+    /// students property를 json 파일에 저장
+    private func saveData() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            let data = try encoder.encode(StudentList(students: students))
+            
+            if false == FileManager.default.fileExists(atPath: DataFile.pathString) {
+                FileManager.default.createFile(atPath: DataFile.pathString, contents: nil)
+            }
+            
+            try data.write(to: DataFile.pathUrl)
+            let names = students.map {$0.name}
+            
+            IOManager.writeMessage(Info.Data.saved(names: names), type: .reaction)
+        } catch {
+            IOManager.writeMessage(error.localizedDescription, type: .error)
+        }
+    }
+}
