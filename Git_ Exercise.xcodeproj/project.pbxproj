@@ -11,6 +11,8 @@
 		4F352FC1294FFF07004F65AA /* ReadLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F352FC0294FFF07004F65AA /* ReadLine.swift */; };
 		4F352FC429500264004F65AA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4F352FC329500264004F65AA /* Realm */; };
 		4F352FC629500264004F65AA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4F352FC529500264004F65AA /* RealmSwift */; };
+		4F352FC829500355004F65AA /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F352FC729500355004F65AA /* StudentViewModel.swift */; };
+		4F352FCB29500386004F65AA /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F352FCA29500386004F65AA /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		2768CA04294F453B00990B98 /* Git_ Exercise */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Git_ Exercise"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2768CA07294F453B00990B98 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4F352FC0294FFF07004F65AA /* ReadLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLine.swift; sourceTree = "<group>"; };
+		4F352FC729500355004F65AA /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
+		4F352FCA29500386004F65AA /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 			children = (
 				2768CA07294F453B00990B98 /* main.swift */,
 				4F352FC0294FFF07004F65AA /* ReadLine.swift */,
+				4F352FC729500355004F65AA /* StudentViewModel.swift */,
+				4F352FCA29500386004F65AA /* Student.swift */,
 			);
 			path = "Git_ Exercise";
 			sourceTree = "<group>";
@@ -134,8 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F352FC829500355004F65AA /* StudentViewModel.swift in Sources */,
 				2768CA08294F453B00990B98 /* main.swift in Sources */,
 				4F352FC1294FFF07004F65AA /* ReadLine.swift in Sources */,
+				4F352FCB29500386004F65AA /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
