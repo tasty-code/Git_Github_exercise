@@ -31,4 +31,9 @@ final class Student: Codable {
     init(name: String) {
         self.name = name
     }
+    
+    func update(course: String, score: Score) {
+        scores.updateValue(score, forKey: course)
+    }
+    
 }
