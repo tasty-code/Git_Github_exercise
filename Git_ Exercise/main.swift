@@ -75,4 +75,101 @@ class DataBase: Codable
         result.append(String(format:"평점 : %.2f", score))
         return result
     }
+    func save() {
+        // FileManager 인스턴스 생성
+        let fileManager: FileManager = FileManager.default
+        // 사용자의 문서 경로
+        let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // 파일을 저장할 디렉토리 경로(URL) 반환 (경로 추가)
+        let directoryPath: URL = documentPath.appendingPathComponent("MyCreditManagerSave")
+        // 디렉토리에 만들 '파일이름.확장자' 설정 (경로에 'hi.txt'의 새 경로 추가)
+        let textPath: URL = directoryPath.appendingPathComponent("save.txt")
+        
+        // 1. encoder instance 생성
+        var result = ""
+        do{
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted // 출력용 설정
+            
+            // 2. encode method 로 Codable 준수하는 타입의 instance 넘기기
+            let data = try encoder.encode(database.students)
+            
+            result = (String(data: data, encoding: .utf8)!)
+            //optional forced unwrapping
+        }catch _ {
+            print("")
+        }
+        
+        if let data: Data = result.data(using: String.Encoding.utf8) { // String to Data
+            do {
+                try data.write(to: textPath) // 위 data를 "hi.txt"에 쓰기
+            } catch _ {
+//                print(e.localizedDescription)
+            }
+        }
+    }
+    func load() {
+        let fileManager: FileManager = FileManager.default
+        // 사용자의 문서 경로
+        let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // 파일을 저장할 디렉토리 경로(URL) 반환 (경로 추가)
+        let directoryPath: URL = documentPath.appendingPathComponent("MyCreditManagerSave")
+        // 디렉토리에 만들 '파일이름.확장자' 설정 (경로에 'hi.txt'의 새 경로 추가)
+        let textPath: URL = directoryPath.appendingPathComponent("save.txt")
+        
+        do {
+            let dataFromPath: Data = try Data(contentsOf: textPath) // URL을 불러와서 Data타입으로 초기화
+            let text: String = String(data: dataFromPath, encoding: .utf8) ?? "문서없음" // Data to String
+            
+            // 1. JSON 데이터를 담은 Data 인스턴스 생성
+            let jsonData = text.data(using: .utf8)!
+              
+            // 2. decoder 인스턴스 생성
+            let decoder = JSONDecoder()
+              
+            // 3. 타입과 json data 를 decode method 에 넘기면 Point 인스턴스 반환
+            let result = try decoder.decode([String:Student].self, from: jsonData)
+              students = result
+              
+//            print([String:Student])
+            
+//            print(text) // 출력
+        } catch _ {
+//            print(e.localizedDescription)
+        }
+    }
+    func saves() {
+        // FileManager 인스턴스 생성
+        let fileManager: FileManager = FileManager.default
+        // 사용자의 문서 경로
+        let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // 파일을 저장할 디렉토리 경로(URL) 반환 (경로 추가)
+        let directoryPath: URL = documentPath.appendingPathComponent("MyCreditManagerSave")
+        // 디렉토리에 만들 '파일이름.확장자' 설정 (경로에 'hi.txt'의 새 경로 추가)
+        let textPath: URL = directoryPath.appendingPathComponent("save.txt")
+        
+        // 1. encoder instance 생성
+        var result = ""
+        do{
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted // 출력용 설정
+            
+            // 2. encode method 로 Codable 준수하는 타입의 instance 넘기기
+            let data = try encoder.encode(database.students)
+            
+            result = (String(data: data, encoding: .utf8)!)
+            //optional forced unwrapping
+        }catch _ {
+            print("")
+        }
+        
+        if let data: Data = result.data(using: String.Encoding.utf8) { // String to Data
+            do {
+                try data.write(to: textPath) // 위 data를 "hi.txt"에 쓰기
+            } catch _ {
+//                print(e.localizedDescription)
+            }
+        }
+    }
     
+}
