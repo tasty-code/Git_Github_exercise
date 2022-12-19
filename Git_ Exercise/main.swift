@@ -196,3 +196,31 @@ class DataBase: Codable
 var database = DataBase()
 database.makeFolder()
 database.load()
+
+var running = true
+    // while true 구문에 사용하기 위한 변수. false로 바꿔주면 프로그램이 종료되게(프로그램 종료 메뉴에 활용)
+while running
+{
+    print("원하는 기능을 입력해주세요\n1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료")
+    /*input을 받기 위해 readLine() 사용. readLine()은 입력을 모두 optional String으로 처리함.
+     콘솔창에서 입력받기 때문에 nil값이 들어오는것을 고려하지 않음*/
+    let inputMenu = readLine() ?? ""
+    /*
+     switch case 구문을 활용해 input값에 해당하는 함수를 실행시켜줄것. 메뉴 이름에 매칭되게 함수 이름을 설정해준다.
+     1: addStudent(), 2: deleteStudent(), 3: addCourse(), 4: deleteCourse(), 5:checkGrade(), X:endProgram()
+     */
+    switch inputMenu
+    {
+    case "1": addStudent()
+    case "2": deleteStudent()
+    case "3": addCourse()
+    case "4": deleteCourse()
+    case "5": checkGrade()
+    case "X": endProgram()
+    default: print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
+        continue
+        /*swich case는 비교값이 확실하지 않은경우(ex: 총 요소 :5개 와 같이 확실한 경우가 아니면) default 써줘야함.
+         continue는 case 이외의 입력값이 들어오면 while running 첫부분으로 돌아가도록.*/
+        
+    }
+}
