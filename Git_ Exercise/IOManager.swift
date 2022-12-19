@@ -26,4 +26,8 @@ enum IOManager {
         return input
     }
     
+    static func checkValidity(of str: String) -> Bool {
+        return str.range(of: Self.nameRegex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
 }
