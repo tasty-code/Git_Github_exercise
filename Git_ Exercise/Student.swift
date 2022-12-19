@@ -11,6 +11,10 @@ final class Student: Codable {
     let name: String
     private(set) var scores = [String:Score]()
     
+    var isCourseEmpty: Bool {
+        return scores.isEmpty
+    }
+    
     init(name: String) {
         self.name = name
     }
