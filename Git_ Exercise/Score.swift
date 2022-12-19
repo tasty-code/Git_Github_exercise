@@ -18,6 +18,29 @@ enum Score: Float, Codable {
     case D = 1
     case F = 0
     
+    var description: String {
+        switch self {
+        case .APlus:
+            return "A+"
+        case .A:
+            return "A0"
+        case .BPlus:
+            return "B+"
+        case .B:
+            return "B0"
+        case .CPlus:
+            return "C+"
+        case .C:
+            return "C0"
+        case .DPlus:
+            return "D+"
+        case .D:
+            return "D0"
+        case .F:
+            return "F"
+        }
+    }
+    
     init?(score: String) {
         switch score {
         case "A+", "a+", "4.5":
