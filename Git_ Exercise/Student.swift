@@ -36,4 +36,7 @@ final class Student: Codable {
         scores.updateValue(score, forKey: course)
     }
     
+    func remove(course: String) -> Score? {
+        return scores.removeValue(forKey: course)
+    }
 }
