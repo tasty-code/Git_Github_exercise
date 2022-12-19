@@ -20,6 +20,10 @@ class Process {
         
     }
     
+    func deleteGrade() {
+        
+    }
+    
     func viewOfAverage() {
         
     }
