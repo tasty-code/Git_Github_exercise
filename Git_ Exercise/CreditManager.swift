@@ -173,6 +173,84 @@ class CreditManager {
                 /// 학생이 잘 삭제되었는지 확인하기 위해 print문을 사용한다.
 //                print(studentCreditList)
                 
+                // MARK: - 성적 추가 기능
+            case .addGrade:
+                /// 성적 추가 안내 문구를 출력한다.
+                consoleIO.printAddGradeGuid()
+                
+                /// 사용자에게 추가할 학생의 이름, 과목 이름, 성적을 입력받는 상수를 선언하고 입력받은 내용을 할당한다.
+                let addGradeInput: String = consoleIO.getInput()
+                
+                /// 띄어쓰기로 구분하여 입력받은 addGradeInput을 separator(공백문자) 기준으로 구분하여 배열로 만들어주는 split를 사용한 후 상수에 할당한다.
+                let splitAddGradeInput = addGradeInput.split(separator: " ")
+                
+                /// 학생이 이미 존재하는지를 판단하는 변수를 선언하고 기본값을 true로 할당한다.
+                var isStudentExist: Bool = true
+                
+                /// 학생이 존재하는 위치의 index를 가지게 될 변수를 선언한다.
+                var existIndex: Int = 0
+                
+                /// 학생이 존재하는지를 판단할 함수를 선언한다.
+                func checkStudentExist() {
+                    for studentCell in studentCreditList {
+                        /// 입력을 학생 이름, 과목 이름, 성적 순서대로 받으므로 학생 이름을 받아오기 위해서는 index가 0인 것을 불러와야 한다.
+                        if studentCell.name == splitAddGradeInput[0] {
+                            break
+                        } else {
+                            existIndex += 1
+                        }
+                    }
+                    /// count한 index 값이 studentCreditList의 배열 길이와 같으면 학생이 존재하지 않으므로 존재하는지 판단하는 변수를 false로 전환한다.
+                    if existIndex == studentCreditList.count {
+                        isStudentExist = false
+                    }
+                }
+                
+                /// 과목이 존재하는지를 판단하는 변수를 선언 후 false를 기본값으로 할당한다.
+                var isSubjectExist: Bool = false
+                
+                /// 과목의 위치 index를 가지는 변수를 선언한다.
+                var subjectIndex: Int = 0
+                
+                /// 과목이 존재하는지를 판단할 함수를 선언한다.
+                func subjectExistCheck() {
+                    for subject in studentCreditList[existIndex].subject {
+                        if subject == splitAddGradeInput[1] {
+                            isSubjectExist = true
+                            break
+                        } else {
+                            subjectIndex += 1
+                        }
+                    }
+                }
+                
+                /// 입력이 없는데 존재여부를 판단하게 되는 경우 에러가 발생하므로, 입력값이 있을 때만 확인하도록 if 조건문을 사용한다.
+                if addGradeInput != "" {
+                    /// 학생이 존재하는지를 판단하는 함수 실행한다.
+                    checkStudentExist()
+                    
+                    /// 과목이 존재하는지를 판단할 함수를 실행한다.
+                    subjectExistCheck()
+                }
+                
+                /// 예외처리 및 출력을 실행하기 위해 if문을 선언한다.
+                if addGradeInput == "" || splitAddGradeInput.count != 3 || !isStudentExist {
+                    /// 1. 잘못된 입력(공백, 학생이름/과목이름/성적 중 하나가 입력되지 않거나 초과 입력한 경우)인 경우 에러 메세지를 출력한다.
+                    consoleIO.printFuncInputError()
+                } else if isSubjectExist {
+                    /// 과목이 이미 존재하는 경우 성적만 바꿔준다.
+                    studentCreditList[existIndex].credit[subjectIndex] = String(splitAddGradeInput[2])
+                    consoleIO.printAddGradeSuccess(name: String(splitAddGradeInput[0]), subject: String(splitAddGradeInput[1]), grade: String(splitAddGradeInput[2]))
+                } else {
+                    /// 과목이 없지만 잘못된 입력이 아닌 경우 과목을 추가하고 성적도 추가해준다.
+                    studentCreditList[existIndex].subject.append(String(splitAddGradeInput[1]))
+                    studentCreditList[existIndex].credit.append(String(splitAddGradeInput[2]))
+                    consoleIO.printAddGradeSuccess(name: String(splitAddGradeInput[0]), subject: String(splitAddGradeInput[1]), grade: String(splitAddGradeInput[2]))
+                }
+                
+                /// 성적이 잘 추가(변경)되었는지 확인하기 위해 print문을 사용한다.
+//                print(studentCreditList)
+                
                 
             }
         }
