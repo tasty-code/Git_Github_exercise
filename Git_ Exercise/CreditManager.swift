@@ -251,6 +251,82 @@ class CreditManager {
                 /// 성적이 잘 추가(변경)되었는지 확인하기 위해 print문을 사용한다.
 //                print(studentCreditList)
                 
+                // MARK: - 성적 삭제 기능
+            case .deleteGrade:
+                /// 성적 삭제 안내 문구를 출력한다.
+                consoleIO.printDeleteGradeGuid()
+                
+                /// 사용자에게 삭제할 학생의 이름, 과목 이름을 입력받는 상수를 선언하고 입력받은 내용을 할당한다.
+                let deleteGradeInput: String = consoleIO.getInput()
+                
+                /// 띄어쓰기로 구분하여 입력받은 deleteGradeInput을 separator(공백문자) 기준으로  구분하여 배열로 만들어주는 split를 사용한 후 상수에 할당한다.
+                let splitDeleteGradeInput = deleteGradeInput.split(separator: " ")
+                
+                /// 학생이 이미 존재하는지를 판단하는 변수를 선언 후 기본값을 true로 선언한다.
+                var isStudentExist: Bool = true
+                
+                /// 학생이 존재하는 위치의 index를 가지게 될 변수를 선언한다.
+                var existIndex: Int = 0
+                
+                /// 학생이 존재하는지를 판단할 함수를 선언한다.
+                func studentExistCheck() {
+                    for studentCell in studentCreditList {
+                        /// 입력받은 이름이 studentCreditList에 있는지를 확인한다.
+                        if studentCell.name == splitDeleteGradeInput[0] {
+                            break
+                        } else {
+                            existIndex += 1
+                        }
+                    }
+                    if existIndex == studentCreditList.count {
+                        isStudentExist = false
+                    }
+                }
+                
+                /// 과목이 존재하는지를 판단하는 변수를 선언하고 true를 할당한다.
+                var isSubjectExist: Bool = true
+                
+                /// 과목의 위치 index를 가지는 변수를 선언한다.
+                var subjectIndex: Int = 0
+                
+                /// 과목이 존재하는지, 몇 번째 인덱스에 있는지 찾아내는 함수를 선언한다.
+                func subjectExistCheck() {
+                    for subject in studentCreditList[existIndex].subject {
+                        if subject == splitDeleteGradeInput[1] {
+                            break
+                        } else {
+                            subjectIndex += 1
+                        }
+                    }
+                    if subjectIndex == studentCreditList[existIndex].subject.count {
+                        isSubjectExist = false
+                    }
+                }
+                
+                /// 입력이 없는데 존재여부를 판단하게 되는 경우 Index out of range 에러가 발생하므로, 입력값이 있을 때만 확인하도록 if 조건문을 사용한다.
+                if deleteGradeInput != "" {
+                    /// 학생이 존재하는지를 판단할 함수를 호출한다.
+                    studentExistCheck()
+                    if isStudentExist == true {
+                        /// 학생이 존재한다면 과목이 존재하는지, 몇 번째 인덱스에 있는지 찾아내는 함수를 호출한다.
+                        subjectExistCheck()
+                    }
+                }
+                
+                // 예외처리 및 출력을 실행하는 구간
+                if deleteGradeInput == "" || splitDeleteGradeInput.count != 2 || !isSubjectExist {
+                    consoleIO.printFuncInputError()
+                } else if !isStudentExist {
+                    consoleIO.printStudentMissingError(name: String(splitDeleteGradeInput[0]))
+                } else {
+                    studentCreditList[existIndex].subject.remove(at: subjectIndex)
+                    studentCreditList[existIndex].credit.remove(at: subjectIndex)
+                    consoleIO.printDeleteGradeSuccess(name: String(splitDeleteGradeInput[0]), subject: String(splitDeleteGradeInput[1]))
+                }
+                
+                /// 성적이 잘 삭제되었는지 확인하기 위해 print문을 사용한다.
+//                print(studentCreditList)
+                
                 
             }
         }
