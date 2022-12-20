@@ -327,7 +327,71 @@ class CreditManager {
                 /// 성적이 잘 삭제되었는지 확인하기 위해 print문을 사용한다.
 //                print(studentCreditList)
                 
+                // MARK: - 평점 기능
+            case .average:
+                /// 평점 기능 안내 문구를 출력한다.
+                consoleIO.printAverageGuid()
                 
+                /// 사용자가 평점을 조회하고 싶은 학생의 이름을 입력받는 상수를 선언하고 입력받은 내용을 할당한다.
+                let nameForAverage: String = consoleIO.getInput()
+                
+                /// 학생이 이미 존재하는지를 판단하는 변수를 선언하고 true를 할당한다.
+                var isStudentExist: Bool = true
+
+                /// 학생이 존재하는 위치의 index를 가지게 될 변수를 선언한다.
+                var existIndex: Int = 0
+                
+                /// 학생이 존재하는지를 판단할 함수를 선언한다.
+                func studentExistCheck() {
+                    for studentCell in studentCreditList {
+                        if studentCell.name == nameForAverage {
+                            break
+                        } else {
+                            existIndex += 1
+                        }
+                    }
+                    if existIndex == studentCreditList.count {
+                        isStudentExist = false
+                    }
+                }
+                
+                /// 학생이 존재하는지를 판단할 함수를 호출한다.
+                studentExistCheck()
+                
+                /// 점수의 위치 index값을 가지게 될 변수를 선언한다.
+                var creditIndex: Int = 0
+                
+                /// 점수의 합을 할당받을 변수를 선언한다.
+                var sum: Double = 0.0
+                
+                /// 점수의 합을 과목 수로 나눈 평균을 할당받을 변수를 선언한다.
+                var average: Double = 0.0
+                
+                /// 예외처리 및 출력을 실행하는 구간을 위해 if문을 선언한다.
+                if nameForAverage == "" {
+                    consoleIO.printFuncInputError()
+                } else if !isStudentExist {
+                    consoleIO.printStudentMissingError(name: nameForAverage)
+                } else {
+                    for subject in studentCreditList[existIndex].subject {
+                        consoleIO.printAverageSubjectsSuccess(subject: subject, grade: String(studentCreditList[existIndex].credit[creditIndex]))
+                        sum += creditByGrade[studentCreditList[existIndex].credit[creditIndex]]!
+                        creditIndex += 1
+                    }
+                    
+                    /// 출력형식에 소수점까지 보여주어야 하므로 Int인 creditIndex를 Double로 형변환하여 나누는 연산을 수행한다.
+                    average = sum / Double(creditIndex)
+                    consoleIO.printAverageSuccess(average: average)
+                }
+                
+                // MARK: - 종료 기능
+            case .quit:
+                consoleIO.printQuitGuide()
+                isRun = false
+                
+                /// case가 아닌 경우(메뉴가 아닌 다른 것을 입력한 경우) default를 수행한다.
+            default:
+                consoleIO.printMenuInputError()
             }
         }
     }
