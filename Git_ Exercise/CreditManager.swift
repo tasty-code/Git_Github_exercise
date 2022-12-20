@@ -133,6 +133,47 @@ class CreditManager {
                 }
                 /// 학생이 잘 추가되었는지 확인하기 위해 print문을 사용한다.
 //                print(studentCreditList)
+                
+                // MARK: - 학생 삭제 기능
+            case .deleteStudent:
+                /// 학생 삭제 안내 문구를 출력한다.
+                consoleIO.printDeleteStudentGuid()
+                
+                /// 사용자에게 삭제할 학생의 이름을 입력받는 상수를 선언하고 입력받은 내용을 할당한다.
+                let deleteStudentName: String = consoleIO.getInput()
+                
+                /// 삭제할 곳의 Index 값을 가지고 있는 변수를 선언한다.
+                var deleteIndex: Int = 0
+                
+                /// 예외처리 및 출력을 실행하는 if문을 선언한다.
+                if  deleteStudentName == "" {
+                    /// 1. 잘못된 입력(공백, 저장된 학생 이름이 없는 경우)인 경우 오류 메세지를 출력한다.
+                    consoleIO.printFuncInputError()
+                } else if studentCreditList.count == 0 {
+                    /// 배열이 비어있는 경우 학생이 없으므로 오류 메세지를 출력한다.
+                    consoleIO.printStudentMissingError(name: deleteStudentName)
+                } else {
+                    /// 정상적으로 삭제된 경우 배열에서 삭제하고 삭제 안내 텍스트 출력한다.
+                    for studentCell in studentCreditList {
+                        if studentCell.name == deleteStudentName {
+                            studentCreditList.remove(at: deleteIndex)
+                            consoleIO.printDeleteStudentSuccess(name: deleteStudentName)
+                            
+                            break
+                        } else {
+                            deleteIndex += 1
+                            if deleteIndex == studentCreditList.count {
+                                /// 2. 없는 학생을 삭제하는 경우 오류 메세지를 출력한다.
+                                consoleIO.printStudentMissingError(name: deleteStudentName)
+                            }
+                        }
+                    }
+                    
+                }
+                /// 학생이 잘 삭제되었는지 확인하기 위해 print문을 사용한다.
+//                print(studentCreditList)
+                
+                
             }
         }
     }
